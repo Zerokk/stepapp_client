@@ -1,0 +1,6 @@
+{
+  "appId": "com.step.app",
+  "appName": "stepapp_client",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}

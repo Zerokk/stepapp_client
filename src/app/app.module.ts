@@ -3,23 +3,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
+import { PlacePage } from '../pages/place_page/place_page';
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { MapPage } from '../pages/map/map';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MapService } from '../services/MapService';
 import { AgmCoreModule } from '@agm/core';
+import { PlaceList } from '../components/place-list/place-list.component';
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    PlacePage,
     ContactPage,
-    HomePage,
-    TabsPage
+    MapPage,
+    TabsPage,
+    PlaceList
   ],
   imports: [
     BrowserModule,
@@ -31,10 +33,11 @@ import { AgmCoreModule } from '@agm/core';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    PlacePage,
     ContactPage,
-    HomePage,
-    TabsPage
+    MapPage,
+    TabsPage,
+    PlaceList
   ],
   providers: [
     StatusBar,

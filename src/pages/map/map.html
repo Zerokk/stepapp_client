@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <span *ngIf="correctInit==false">Map not correctly initialized</span>
+  <agm-map [style.height]="'50%'" [latitude]="coords.lat" [longitude]="coords.lng" [zoom]="16">
+    <agm-marker *ngFor="let place of placesList" [latitude]="place?.get('location')._latitude" [longitude]="place?.get('location')._longitude"
+      [iconUrl]="getMarkerType(place)">
+      <agm-info-window>{{ place?.get("placeName") }}</agm-info-window>
+
+    </agm-marker>
+  </agm-map>
+
+  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="onSegmentChanged($event)">
+    <ion-segment-button value="places">
+      Places
+    </ion-segment-button>
+    <ion-segment-button value="plans & events">
+      Plans & Events
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-content>
+    <ion-item *ngIf="selectedSegment == 'places'">
+      <place-list [places_list]="placesList"></place-list>
+    </ion-item>
+    <ion-item *ngIf="selectedSegment == 'plans & events'">
+      <page-contact></page-contact>
+    </ion-item>
+  </ion-content>
+
+</ion-content>

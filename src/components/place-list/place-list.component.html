@@ -1,0 +1,17 @@
+<ion-list>
+    <ion-list-header>
+        Places near you
+    </ion-list-header>
+    <ion-item *ngFor="let place of places_list">
+        <ion-avatar item-start>
+            <img [src]="place?.get('mainPicture')._url">
+        </ion-avatar>
+        <ion-label>
+            {{ place?.get('placeName') }}
+        </ion-label>
+        <p>
+            {{ place?.get('description') }}
+        </p>
+        <button ion-button outline item-end (click)="viewPlace(place)">View</button>
+    </ion-item>
+</ion-list>

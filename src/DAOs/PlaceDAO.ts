@@ -1,4 +1,4 @@
-import Parse from 'parse';
+import Parse, { GeoPoint } from 'parse';
 
 export class PlaceDAO {
 
@@ -6,8 +6,14 @@ export class PlaceDAO {
 
         try {
             let query = new Parse.Query("Place");
-            query.withinKilometers("location", {latitude: geopoint.lat, longitude: geopoint.lng}, 20);
-            return await query.find();
+            const geo = new Parse.GeoPoint(geopoint.lat, geopoint.lng)
+            const res = await query //.withinKilometers("location", geo, 200)        // TODO FIX
+                            .include("placeType")
+                            .find();
+
+
+            console.log("RES: ", res);
+            return res;
         } catch (err) {
             console.log("DAO ERROR: ", err)
         }

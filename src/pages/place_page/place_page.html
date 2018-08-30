@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Place page</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="image-div" *ngIf="place?.get('mainPicture')">
+    <img class="image" [src]="place?.get('mainPicture')?.url()">
+  </div>
+  <p class="place-name">
+    {{place?.get('placeName')}}
+    <ion-icon class="icon" [name]="place?.get('placeType')?.get('icon')"></ion-icon>
+  </p>
+</ion-content>
